@@ -1,12 +1,13 @@
 import React from 'react';
 import './App.css';
 import Layout from './components/Layout/Layout';
+import AccountService from './context/AccountContext';
 
 function App() {
   return (
-    <div className="App">
+    <AccountService>
       <Layout/>
-    </div>
+    </AccountService>
   );
 }
 

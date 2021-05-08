@@ -1,0 +1,79 @@
+{
+    "items": [
+      {
+        "is": "Account",
+        "id": 1,
+        "code": "CO0001",
+        "is_buyer": true,
+        "is_supplier": true,
+        "type": {
+          "is": "AccountType",
+          "id": 1,
+          "name": "Company"
+        },
+        "type_detail": {
+          "is": "Comnpany",
+          "id": 1,
+          "name": "Somecompany",
+          "phonenumber": "010-1010101"
+        }
+      },
+      {
+        "is": "Account",
+        "id": 2,
+        "code": "CO0002",
+        "is_buyer": true,
+        "is_supplier": false,
+        "type": {
+          "is": "AccountType",
+          "id": 1,
+          "name": "Company"
+        },
+        "type_detail": {
+          "is": "Comnpany",
+          "id": 2,
+          "name": "Anothercompany",
+          "phonenumber": "010-1010102"
+        }
+      },
+      {
+        "is": "Account",
+        "id": 3,
+        "code": "PO0001",
+        "is_buyer": true,
+        "is_supplier": false,
+        "type": {
+          "is": "AccountType",
+          "id": 2,
+          "name": "Person"
+        },
+        "type_detail": {
+          "is": "Person",
+          "id": 1,
+          "firstname": "John",
+          "lastname": "Smith",
+          "phonenumber": "010-1010103"
+        }
+      },
+      {
+        "is": "Account",
+        "id": 4,
+        "code": "PO0001",
+        "is_buyer": true,
+        "is_supplier": false,
+        "type": {
+          "is": "AccountType",
+          "id": 2,
+          "name": "Person"
+        },
+        "type_detail": {
+          "is": "Person",
+          "id": 2,
+          "firstname": "Chris",
+          "lastname": "Johnson",
+          "phonenumber": "010-1010104"
+        }
+      }
+  
+    ]
+  }
