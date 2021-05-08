@@ -4,12 +4,17 @@ import json from "../Assets/input.json";
 import ApiInput from '../models/ApiInput';
 
 type ContextProps = { 
-    getAccounts: () => {},
+    getAccounts: () => void,
     accounts: Account[],
     getAccount: (id: number) => Account
   };
 
-export const AccountContext = createContext<Partial<ContextProps>>({});
+export const AccountContext = createContext<ContextProps>({
+    accounts: [],
+    getAccounts: () => {},
+    getAccount: (id) => new Account()
+
+});
 
 const AccountService: React.FunctionComponent = ({ children }) => {
 
@@ -25,11 +30,18 @@ const AccountService: React.FunctionComponent = ({ children }) => {
         }, 3000);
         return accounts;
     }
+    
+    const getAccount = (id: number) => {
+        return accounts.find(acc => 
+            acc.id === id
+        ) || {}
+    }
    
     return (
         <AccountContext.Provider value={{
             getAccounts,
-            accounts
+            accounts,
+            getAccount
         }}>
             {children}
         </AccountContext.Provider>
