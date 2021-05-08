@@ -54,6 +54,7 @@ h1 {
     height: calc( 100% - 50px);
     display: flex;
     flex-direction: row;
+    position: relative;
 }
 
 .filter-component {
@@ -67,4 +68,10 @@ h1 {
     height: 100%;
     background-color: lightseagreen;
     flex-grow: 1;
+}
+
+.filter-toggle-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
 }

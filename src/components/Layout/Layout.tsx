@@ -3,7 +3,9 @@ import "./Layout.css";
 import { AccountContext } from "../../context/AccountContext";
 
 const Layout = () => {
-  let { getAccounts, accounts, getAccount } = useContext(AccountContext);
+  // let { getAccounts, accounts, getAccount } = useContext(AccountContext);
+  const [isFilterOpen, setFilterOpen] = useState(true);
+
   const [isVerticallyDraged, setIsVerticallyDraged] = useState(false);
   const [dragBarY, setVerticalDragBarY] = useState(400);
 
@@ -28,18 +30,30 @@ const Layout = () => {
   const handleVerticalDragCapture = (e: any) => {
     e.preventDefault();
     setIsVerticallyDraged(true);
-    };
+  };
 
   const handleHorizontalDragCapture = (e: any) => {
     e.preventDefault();
     setIsHorizontallyDraged(true);
-    };
+  };
 
   const handleDragRelease = (e: any) => {
     e.preventDefault();
     setIsVerticallyDraged(false);
-    setIsHorizontallyDraged(false);
-    };
+    if (isHorizontallyDraged) {
+      if (dragBarX < 150) {
+        setHorizontallDragBarX(150)
+        setFilterOpen(false)
+      }
+      setIsHorizontallyDraged(false);
+    }
+    
+
+  };
+
+  const handleFilterToggle = () => {
+    setFilterOpen(!isFilterOpen);
+  };
 
   return (
     <div
@@ -52,21 +66,30 @@ const Layout = () => {
     >
       <div className="upper-section" style={{ height: dragBarY + "px" }}>
         <h1>Accounts</h1>
-        <div className="horizontal-slide-section">
-          <div className="filter-component"
-            style={{width: dragBarX + "px"}}
-          ></div>
-          <div
-            className={
-              isHorizontallyDraged
-                ? "horizontal-drag-bar grabbed"
-                : "horizontal-drag-bar"
-            }
-            onMouseDown={handleHorizontalDragCapture}
-          ></div>
-          <div className="list-component"></div>
-        </div>
-        <div></div>
+        {isFilterOpen ? (
+          <div className="horizontal-slide-section">
+            <div
+              className="filter-component"
+              style={{ width: dragBarX + "px" }}
+            >
+                <button className="filter-toggle-button" onClick={handleFilterToggle}>Close Filter</button>
+            </div>
+            <div
+              className={
+                isHorizontallyDraged
+                  ? "horizontal-drag-bar grabbed"
+                  : "horizontal-drag-bar"
+              }
+              onMouseDown={handleHorizontalDragCapture}
+            ></div>
+            <div className="list-component"></div>
+          </div>
+        ) : (
+          <div className="horizontal-slide-section">
+            <button className="filter-toggle-button" onClick={handleFilterToggle}>Open Filter</button>
+            <div className="list-component"></div>
+          </div>
+        )}
       </div>
       <div className="bottom-section">
         <div
@@ -78,7 +101,7 @@ const Layout = () => {
           onMouseDown={handleVerticalDragCapture}
         ></div>
       </div>
-      {JSON.stringify(accounts)}
+      second section
     </div>
   );
 };
