@@ -1,7 +1,9 @@
 h1 {
     text-align: center;
     background: lightskyblue;
-    margin-top: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    height: 50px;
     border-top: 0px;
     border: 2px solid grey;
 }
@@ -33,6 +35,36 @@ h1 {
     border: 2px solid lightgrey;
 }
 
+
+.horizontal-drag-bar {
+    cursor: grab;
+    width: 20px;
+    height: 100%;
+    background: grey;
+    box-sizing: border-box;
+    border: 2px solid lightgrey;
+}
+
 .grabbed {
     cursor: grabbing;
+}
+
+.horizontal-slide-section {
+    width: 100%;
+    height: calc( 100% - 50px);
+    display: flex;
+    flex-direction: row;
+}
+
+.filter-component {
+    height: 100%;
+    max-width: 50%;
+    background-color: lightsalmon;
+
+}
+
+.list-component {
+    height: 100%;
+    background-color: lightseagreen;
+    flex-grow: 1;
 }
