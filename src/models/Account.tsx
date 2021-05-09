@@ -10,8 +10,8 @@ export default class Account  {
     is_organisor?: boolean;
     is_reseller?: boolean;
     is_supplier?: boolean;
-    type?: AccountType;
-    type_detail?: Company | Person;
+    type!: AccountType;
+    type_detail!: Company & Person;
 
     // {
     //     "is": "Account",

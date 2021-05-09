@@ -6,7 +6,7 @@ import ApiInput from '../models/ApiInput';
 type ContextProps = { 
     getAccounts: () => void,
     accounts: Account[],
-    getAccount: (id: number) => Account,
+    getAccount: (id: number) => Account | null,
     filterBy: FilterType,
     applyFilterBy: (f: FilterType) => void
   };
@@ -41,7 +41,7 @@ const AccountService: React.FunctionComponent = ({ children }) => {
     const getAccount = (id: number) => {
         return accounts.find(acc => 
             acc.id === id
-        ) || {}
+        ) || null
     }
    
     return (

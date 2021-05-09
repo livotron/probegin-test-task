@@ -33,7 +33,8 @@
           "is": "Comnpany",
           "id": 2,
           "name": "Anothercompany",
-          "phonenumber": "010-1010102"
+          "phonenumber": "010-1010102",
+          "website": "wearenotthat.com"
         }
       },
       {
@@ -71,7 +72,26 @@
           "id": 2,
           "firstname": "Chris",
           "lastname": "Johnson",
-          "phonenumber": "010-1010104"
+          "phonenumber": "010-1010104",
+          "email": "chis@ris.is"
+        }
+      },
+      {
+        "is": "Account",
+        "id": 3,
+        "code": "PO9991",
+        "is_buyer": true,
+        "is_supplier": false,
+        "type": {
+          "is": "AccountType",
+          "id": 2,
+          "name": "Person"
+        },
+        "type_detail": {
+          "is": "Person",
+          "id": 1,
+          "firstname": "John",
+          "phonenumber": "010-1010103"
         }
       }
   

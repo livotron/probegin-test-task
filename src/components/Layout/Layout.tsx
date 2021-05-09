@@ -12,7 +12,6 @@ const Layout = () => {
   const [isHorizontallyDraged, setIsHorizontallyDraged] = useState(false);
   const [dragBarX, setHorizontallDragBarX] = useState(300);
 
-
   const handleDragMove = (e: any) => {
     e.preventDefault();
     if (isVerticallyDraged) {
@@ -39,13 +38,11 @@ const Layout = () => {
     setIsVerticallyDraged(false);
     if (isHorizontallyDraged) {
       if (dragBarX < 150) {
-        setHorizontallDragBarX(150)
-        setFilterOpen(false)
+        setHorizontallDragBarX(160);
+        setFilterOpen(false);
       }
       setIsHorizontallyDraged(false);
     }
-    
-
   };
 
   const handleFilterToggle = () => {
@@ -69,8 +66,13 @@ const Layout = () => {
               className="filter-component"
               style={{ width: dragBarX + "px" }}
             >
-                <button className="filter-toggle-button" onClick={handleFilterToggle}>Close Filter</button>
-                <FilterComponent/>
+              <button
+                className="filter-toggle-button"
+                onClick={handleFilterToggle}
+              >
+                -
+              </button>
+              {dragBarX > 150 ? <FilterComponent /> : null}
             </div>
             <div
               className={
@@ -81,14 +83,19 @@ const Layout = () => {
               onMouseDown={handleHorizontalDragCapture}
             ></div>
             <div className="list-component">
-              <SearchList/>
+              <SearchList />
             </div>
           </div>
         ) : (
           <div className="horizontal-slide-section">
-            <button className="filter-toggle-button" onClick={handleFilterToggle}>Open Filter</button>
+            <button
+              className="filter-toggle-button"
+              onClick={handleFilterToggle}
+            >
+              +
+            </button>
             <div className="list-component">
-              <SearchList/>
+              <SearchList />
             </div>
           </div>
         )}
