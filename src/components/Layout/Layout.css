@@ -60,13 +60,10 @@ h1 {
 .filter-component {
     height: 100%;
     max-width: 50%;
-    background-color: lightsalmon;
-
 }
 
 .list-component {
     height: 100%;
-    background-color: lightseagreen;
     flex-grow: 1;
 }
 

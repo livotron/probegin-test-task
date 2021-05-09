@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
+import FilterComponent from "./FilterComponent/FilterComponent";
 import "./Layout.css";
-import { AccountContext } from "../../context/AccountContext";
+import SearchList from "./SearchList/SearchList";
 
 const Layout = () => {
-  // let { getAccounts, accounts, getAccount } = useContext(AccountContext);
   const [isFilterOpen, setFilterOpen] = useState(true);
 
   const [isVerticallyDraged, setIsVerticallyDraged] = useState(false);
@@ -12,9 +12,6 @@ const Layout = () => {
   const [isHorizontallyDraged, setIsHorizontallyDraged] = useState(false);
   const [dragBarX, setHorizontallDragBarX] = useState(300);
 
-  // console.log(accounts)
-  // getAccounts();
-  // console.log(getAccount(2))
 
   const handleDragMove = (e: any) => {
     e.preventDefault();
@@ -73,6 +70,7 @@ const Layout = () => {
               style={{ width: dragBarX + "px" }}
             >
                 <button className="filter-toggle-button" onClick={handleFilterToggle}>Close Filter</button>
+                <FilterComponent/>
             </div>
             <div
               className={
@@ -82,12 +80,16 @@ const Layout = () => {
               }
               onMouseDown={handleHorizontalDragCapture}
             ></div>
-            <div className="list-component"></div>
+            <div className="list-component">
+              <SearchList/>
+            </div>
           </div>
         ) : (
           <div className="horizontal-slide-section">
             <button className="filter-toggle-button" onClick={handleFilterToggle}>Open Filter</button>
-            <div className="list-component"></div>
+            <div className="list-component">
+              <SearchList/>
+            </div>
           </div>
         )}
       </div>

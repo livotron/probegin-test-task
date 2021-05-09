@@ -6,19 +6,26 @@ import ApiInput from '../models/ApiInput';
 type ContextProps = { 
     getAccounts: () => void,
     accounts: Account[],
-    getAccount: (id: number) => Account
+    getAccount: (id: number) => Account,
+    filterBy: FilterType,
+    applyFilterBy: (f: FilterType) => void
   };
+
+type FilterType = "PERSON" | "COMPANY" | "NONE";
 
 export const AccountContext = createContext<ContextProps>({
     accounts: [],
     getAccounts: () => {},
-    getAccount: (id) => new Account()
+    getAccount: (id) => new Account(),
+    filterBy: "NONE",
+    applyFilterBy:  (f) => {}
 
 });
 
 const AccountService: React.FunctionComponent = ({ children }) => {
 
     const [accounts, setAccounts] = useState<Account[]>([]);
+    const [filterBy, applyFilterBy] = useState<FilterType>("NONE");
 
     const getAccounts = () => {
         console.log("getting account")
@@ -41,7 +48,9 @@ const AccountService: React.FunctionComponent = ({ children }) => {
         <AccountContext.Provider value={{
             getAccounts,
             accounts,
-            getAccount
+            getAccount,
+            filterBy,
+            applyFilterBy
         }}>
             {children}
         </AccountContext.Provider>
