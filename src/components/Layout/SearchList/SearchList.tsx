@@ -21,16 +21,22 @@ const SearchList = () => {
     return true;
   });
 
-//   const searchedAccounts = filteredAccounts.filter(account => {
-//     if (account.type_detail.name &&) {
-//         return account.type.name === "Company"
-//     } else if (filterBy === "PERSON") {
-//         return account.type.name === "Person"
-//     }
-//     return true;
-//   });
+  const searchedAccounts = filteredAccounts.filter(account => {
+    if (searchFor === "") {
+        return true;
+    }
 
-  const listItems = filteredAccounts.map((account, index) => (
+    if ((account.type_detail.name && account.type_detail.name.startsWith(searchFor))
+        || (account.type_detail.firstname && account.type_detail.firstname.startsWith(searchFor))
+        || (account.type_detail.lastname && account.type_detail.lastname.startsWith(searchFor))
+        || (account.type_detail.email && account.type_detail.email.startsWith(searchFor))
+        || (account.type_detail.website && account.type_detail.website.startsWith(searchFor))) {
+        return true
+    }
+    return false;
+  });
+
+  const listItems = searchedAccounts.map((account, index) => (
     <ListItem
       key={index}
       code={account.code}
@@ -47,7 +53,8 @@ const SearchList = () => {
   ));
   return (
     <div className="search-list">
-      <input className="search-bar" placeholder="ENTER SEARCH TEXT" />
+      <input className="search-bar" placeholder="ENTER SEARCH TEXT" 
+      onChange={(e) => setSearchFor(e.target.value)}/>
       <div className="list-scroll">
         <ListItem
           code="Code"
