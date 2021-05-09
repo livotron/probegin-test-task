@@ -60,6 +60,7 @@ h1 {
 .filter-component {
     height: 100%;
     max-width: 50%;
+    background-color: lightgrey;
 }
 
 .list-component {

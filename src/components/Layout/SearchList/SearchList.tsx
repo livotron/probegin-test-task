@@ -1,17 +1,36 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AccountContext } from "../../../context/AccountContext";
 import ListItem from "./ListItem/ListItem";
 import "./SearchList.css";
 
 const SearchList = () => {
-  const { accounts, getAccounts } = useContext(AccountContext);
+  const { accounts, getAccounts, filterBy } = useContext(AccountContext);
+  const [searchFor, setSearchFor] = useState<string>("")
 
   useEffect(() => {
     getAccounts();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const listItems = accounts.map((account, index) => (
+  const filteredAccounts = accounts.filter(account => {
+    if (filterBy === "COMPANY") {
+        return account.type.name === "Company"
+    } else if (filterBy === "PERSON") {
+        return account.type.name === "Person"
+    }
+    return true;
+  });
+
+//   const searchedAccounts = filteredAccounts.filter(account => {
+//     if (account.type_detail.name &&) {
+//         return account.type.name === "Company"
+//     } else if (filterBy === "PERSON") {
+//         return account.type.name === "Person"
+//     }
+//     return true;
+//   });
+
+  const listItems = filteredAccounts.map((account, index) => (
     <ListItem
       key={index}
       code={account.code}
