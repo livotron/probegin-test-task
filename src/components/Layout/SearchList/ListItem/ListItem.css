@@ -15,3 +15,7 @@
     overflow: hidden;
 }
 
+.selected-item {
+    background-color: lightskyblue;
+}
+

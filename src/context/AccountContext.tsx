@@ -6,9 +6,10 @@ import ApiInput from '../models/ApiInput';
 type ContextProps = { 
     getAccounts: () => void,
     accounts: Account[],
-    getAccount: (id: number) => Account | null,
+    getSelectedAccount: (id: number) => Account | null,
     filterBy: FilterType,
-    applyFilterBy: (f: FilterType) => void
+    applyFilterBy: (f: FilterType) => void,
+    setSelectedAccountId: (id: number) => void
   };
 
 type FilterType = "PERSON" | "COMPANY" | "NONE";
@@ -16,9 +17,10 @@ type FilterType = "PERSON" | "COMPANY" | "NONE";
 export const AccountContext = createContext<ContextProps>({
     accounts: [],
     getAccounts: () => {},
-    getAccount: (id) => new Account(),
+    getSelectedAccount: (id) => new Account(),
     filterBy: "NONE",
-    applyFilterBy:  (f) => {}
+    applyFilterBy:  (f) => {},
+    setSelectedAccountId: (id) => {}
 
 });
 
@@ -26,6 +28,7 @@ const AccountService: React.FunctionComponent = ({ children }) => {
 
     const [accounts, setAccounts] = useState<Account[]>([]);
     const [filterBy, applyFilterBy] = useState<FilterType>("NONE");
+    const [selectedAccountId, setSelectedAccountId] = useState<number>()
 
     const getAccounts = () => {
         console.log("getting account")
@@ -38,9 +41,9 @@ const AccountService: React.FunctionComponent = ({ children }) => {
         return accounts;
     }
     
-    const getAccount = (id: number) => {
+    const getSelectedAccount = () => {
         return accounts.find(acc => 
-            acc.id === id
+            acc.id === selectedAccountId
         ) || null
     }
    
@@ -48,9 +51,10 @@ const AccountService: React.FunctionComponent = ({ children }) => {
         <AccountContext.Provider value={{
             getAccounts,
             accounts,
-            getAccount,
+            getSelectedAccount,
             filterBy,
-            applyFilterBy
+            applyFilterBy,
+            setSelectedAccountId
         }}>
             {children}
         </AccountContext.Provider>

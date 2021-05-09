@@ -7,10 +7,14 @@ type ListItemProps = {
     phonenumber?: string;
     email?: string;
     website?: string;
+    selected: boolean;
+    select: () => void
 }
 const ListItem =  (props: ListItemProps) => {
     return (
-        <div className="list-item">
+        <div className={props.selected ? "list-item selected-item" : "list-item"}
+        onClick={() => props.select()}
+        >
             <div>{props.code}</div>
             <div>{props.name}</div>
             <div>{props.phonenumber}</div>

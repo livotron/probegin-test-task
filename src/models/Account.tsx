@@ -4,7 +4,7 @@ import Person from "./Person";
 
 export default class Account  {
     is?: "Account";
-    id?: number;
+    id!: number;
     code?: string;
     is_buyer?: boolean;
     is_organisor?: boolean;
