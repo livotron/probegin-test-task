@@ -1,6 +1,7 @@
 .account-detail {
     width: 100%;
         min-height: 30px;
+        max-height: calc(100vh - 220px);
 }
 .tab-bar {
     width: 100%;
