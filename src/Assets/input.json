@@ -114,6 +114,26 @@
           "phonenumber": "010-1010103",
           "email": "matroshka.gov.ru"
         }
+      },
+      {
+        "is": "Account",
+        "id": 7,
+        "code": "PO9991",
+        "is_buyer": true,
+        "is_supplier": false,
+        "type": {
+          "is": "AccountType",
+          "id": 4,
+          "name": "Ninja"
+        },
+        "type_detail": {
+          "is": "Ninja",
+          "id": 1,
+          "bondage-color": "Orange",
+          "nickname": "Mikelanjelo",
+          "phonenumber": "010-1010103",
+          "email": "epril.oneal.com  "
+        }
       }
   
     ]

@@ -4,7 +4,7 @@ import ListItem from "./ListItem/ListItem";
 import "./SearchList.css";
 
 const SearchList = () => {
-  const { accounts, getAccounts, filterId } = useContext(AccountContext);
+  const { accounts, getAccounts, filterId, setSelectedAccountId } = useContext(AccountContext);
   const [searchFor, setSearchFor] = useState<string>("");
     const [selectedId, setSelectedId] = useState<number>(0);
   useEffect(() => {
@@ -41,11 +41,20 @@ const SearchList = () => {
     return false;
   });
 
-  const selectItem = () => {};
+  const selectItem = (id: number) => {
+    if(id !== selectedId) {
+      setSelectedId(id);
+      setSelectedAccountId(id);
+    } else {
+      setSelectedId(-1);
+      setSelectedAccountId(-1);
+
+    }
+  };
   const listItems = searchedAccounts.map((account, index) => (
     <ListItem
       selected={selectedId === account.id}
-      select={() => setSelectedId(account.id)}
+      select={() => selectItem(account.id)}
       key={index}
       code={account.code}
       name={

@@ -13,22 +13,4 @@ export default class Account  {
     type!: AccountType;
     type_detail!: Company & Person | any;
 
-    // {
-    //     "is": "Account",
-    //     "id": 1,
-    //     "code": "CO0001",
-    //     "is_buyer": true,
-    //     "is_supplier": true,
-    //     "type": {
-    //       "is": "AccountType",
-    //       "id": 1,
-    //       "name": "Company"
-    //     },
-    //     "type_detail": {
-    //       "is": "Comnpany",
-    //       "id": 1,
-    //       "name": "Somecompany",
-    //       "phonenumber": "010-1010101"
-    //     }
-    //   }
 }
