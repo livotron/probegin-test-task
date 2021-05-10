@@ -4,7 +4,7 @@ import ListItem from "./ListItem/ListItem";
 import "./SearchList.css";
 
 const SearchList = () => {
-  const { accounts, getAccounts, filterBy } = useContext(AccountContext);
+  const { accounts, getAccounts, filterId } = useContext(AccountContext);
   const [searchFor, setSearchFor] = useState<string>("");
     const [selectedId, setSelectedId] = useState<number>(0);
   useEffect(() => {
@@ -13,11 +13,9 @@ const SearchList = () => {
   }, []);
 
   const filteredAccounts = accounts.filter((account) => {
-    if (filterBy === "COMPANY") {
-      return account.type.name === "Company";
-    } else if (filterBy === "PERSON") {
-      return account.type.name === "Person";
-    }
+    if (filterId !== -1) {
+      return account.type.id === filterId;
+    };
     return true;
   });
 

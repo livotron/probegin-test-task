@@ -11,7 +11,7 @@ export default class Account  {
     is_reseller?: boolean;
     is_supplier?: boolean;
     type!: AccountType;
-    type_detail!: Company & Person;
+    type_detail!: Company & Person | any;
 
     // {
     //     "is": "Account",

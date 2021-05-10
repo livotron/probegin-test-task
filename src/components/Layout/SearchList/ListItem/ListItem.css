@@ -13,6 +13,8 @@
     height: 25px;
     text-align: center;
     overflow: hidden;
+    user-select: none;
+    cursor:pointer;
 }
 
 .selected-item {

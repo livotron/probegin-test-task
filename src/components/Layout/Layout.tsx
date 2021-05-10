@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import AccountDetail from "./AccountDetail/AccountDetail";
 import FilterComponent from "./FilterComponent/FilterComponent";
 import "./Layout.css";
 import SearchList from "./SearchList/SearchList";
@@ -60,8 +61,10 @@ const Layout = () => {
     >
       <div className="upper-section" style={{ height: dragBarY + "px" }}>
         <h1>Accounts</h1>
+        <div className="horizontal-slide-section">
+
         {isFilterOpen ? (
-          <div className="horizontal-slide-section">
+          <>
             <div
               className="filter-component"
               style={{ width: dragBarX + "px" }}
@@ -82,23 +85,20 @@ const Layout = () => {
               }
               onMouseDown={handleHorizontalDragCapture}
             ></div>
-            <div className="list-component">
-              <SearchList />
-            </div>
-          </div>
+            </>
         ) : (
-          <div className="horizontal-slide-section">
             <button
               className="filter-toggle-button"
               onClick={handleFilterToggle}
             >
               +
             </button>
-            <div className="list-component">
+        )}
+                    <div className="list-component">
               <SearchList />
             </div>
-          </div>
-        )}
+            </div>
+
       </div>
       <div className="bottom-section">
         <div
@@ -110,7 +110,7 @@ const Layout = () => {
           onMouseDown={handleVerticalDragCapture}
         ></div>
       </div>
-      second section
+      <AccountDetail reservedHeight={dragBarY}/>
     </div>
   );
 };

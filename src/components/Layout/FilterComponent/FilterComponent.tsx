@@ -4,34 +4,25 @@ import "./FilterComponent.css";
 
 const FilterComponent = () => {
 
-    const {filterBy, applyFilterBy} = useContext(AccountContext)
+    const {filterId, applyFilterId, accountTypes} = useContext(AccountContext)
 
-    const handleCompanyClick = () => {
-        if(filterBy !== "COMPANY") {
-            applyFilterBy("COMPANY");
-        } else if(filterBy === "COMPANY") {
-            applyFilterBy("NONE");
-        }
-    }
-
-    const handlePersonClick = () => {
-        if(filterBy !== "PERSON") {
-            applyFilterBy("PERSON");
-        } else if(filterBy === "PERSON") {
-            applyFilterBy("NONE");
+    const handleFilterClick = (clickedId:number) => {
+        if(filterId !== clickedId) {
+            applyFilterId(clickedId);
+        } else if(filterId === clickedId) {
+            applyFilterId(-1);
         }
     }
 
     return (
         <div className="filter-component">
-            <button className={filterBy === 
-            "COMPANY"? "filter-button active-filter" : "filter-button"}
-            onClick={handleCompanyClick}
-            >Company</button>
-            <button className={filterBy === 
-            "PERSON"? "filter-button active-filter" : "filter-button"}
-            onClick={handlePersonClick}
-            >Person</button>
+            {accountTypes.map((accType,index) => (
+            <button className={filterId === 
+                accType.id? "filter-button active-filter" : "filter-button"}
+                onClick={() => handleFilterClick(accType.id)}
+                key={index}
+                >{accType.name}</button>
+            ))}
         </div>
     )
 }
